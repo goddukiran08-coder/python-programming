@@ -1,0 +1,18 @@
+
+class Solution:
+    def convert(self, s, numRows):
+        if numRows == 1 or numRows >= len(s):
+            return s
+
+        rows = [""] * numRows
+        currentRow = 0
+        direction = -1
+
+        for ch in s:
+            if currentRow == 0 or currentRow == numRows - 1:
+                direction *= -1
+
+            rows[currentRow] += ch
+            currentRow += direction
+
+        return "".join(rows)
